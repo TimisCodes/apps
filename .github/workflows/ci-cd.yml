@@ -34,3 +34,5 @@ jobs:
         run: |
           echo "Deploying application..."
           # Add deployment script or AWS/GCP/Kubernetes command
+
+    # new folder of dice game has been added
