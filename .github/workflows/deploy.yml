@@ -6,7 +6,7 @@ on:
       - static
 
 jobs:
-  deploy:
+  deploy: #j
     runs-on: ubuntu-latest
 
     steps:
