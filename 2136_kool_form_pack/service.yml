@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: web01-service
+  labels:
+    app: app-web01
+    type: frontend
+spec:
+  selector:
+    app: app-web01
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3000
+  type: LoadBalancer
+  externalTrafficPolicy: Local

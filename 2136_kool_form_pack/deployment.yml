@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web01
+  labels:
+    app: app-web01
+    type: front-end
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: app-web01
+  template:
+    metadata:
+      labels:
+        app: app-web01
+    spec:
+      containers:
+        - name: web01-app
+          image: timiscode/web01:latest
+          ports:
+            - containerPort: 3000
