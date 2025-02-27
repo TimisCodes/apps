@@ -1,0 +1,35 @@
+name: Deploy to Kubernetes
+
+on:
+  push:
+    branches:
+      - main  # Runs on push to main branch
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+
+    - name: Login to Docker Hub
+      run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+
+    - name: Build and Push Docker Image
+      run: |
+        docker build -t timiscode/web01:latest .
+        docker push timiscode/web01:latest
+
+    - name: Setup kubectl
+      run: |
+        echo "${{ secrets.KUBECONFIG }}" | base64 --decode > $HOME/.kube/config
+        chmod 600 $HOME/.kube/config
+
+    - name: Deploy to Kubernetes
+      run: |
+        kubectl set image deployment/web01 web01-app=timiscode/web01:latest
+        kubectl rollout status deployment/web01
