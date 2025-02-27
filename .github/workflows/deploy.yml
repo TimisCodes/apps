@@ -24,10 +24,12 @@ jobs:
         docker pull timiscode/web01:latest 
         
 
-    - name: Setup kubectl
-      run: |
-        echo "${{ secrets.KUBECONFIG }}" | base64 --decode > $HOME/.kube/config
-        chmod 600 $HOME/.kube/config
+        - name: Setup kubectl
+        run: |
+          echo "${{ secrets.KUBECONFIG }}" | base64 -d > $HOME/.kube/config
+          mkdir -p $HOME/.kube
+          chmod 600 $HOME/.kube/config
+        shell: bash
 
     - name: Deploy to Kubernetes
       run: |
