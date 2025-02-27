@@ -21,7 +21,7 @@ jobs:
 
     - name: pull Docker Image
       run: |
-        docker pull timiscode/web01:latest .
+        docker pull timiscode/web01:latest 
         
 
     - name: Setup kubectl
