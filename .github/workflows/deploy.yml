@@ -40,5 +40,9 @@ jobs:
         kubectl set image deployment/dice-app dice-app=timiscode/dice:latest 
         kubectl rollout status deployment/dice-app
       shell: bash
+
+    - name: Apply Kubernetes Manifests
+      run: kubectl apply -f DICE_GAME/
+      shell: bash
       # updated1
      
