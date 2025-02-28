@@ -32,6 +32,7 @@ jobs:
 
     - name: Deploy to Kubernetes
       run: |
-        kubectl set image deployment/dice-app dice-app=timiscode/dice:latest
+        kubectl set image deployment/dice-app dice-app=timiscode/dice:latest 
         kubectl rollout status deployment/dice
       shell: bash
+      # updated
