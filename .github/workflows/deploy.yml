@@ -20,7 +20,7 @@ jobs:
       run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
 
     - name: Pull Docker Image
-      run: docker pull timiscode/web01:latest
+      run: docker pull timiscode/dice:latest
       shell: bash
 
     - name: Setup kubectl
@@ -32,6 +32,6 @@ jobs:
 # hello
     - name: Deploy to Kubernetes
       run: |
-        kubectl set image deployment/web01 web01-app=timiscode/web01:latest
-        kubectl rollout status deployment/web01
+        kubectl set image deployment/dice dice-app=timiscode/dice:latest
+        kubectl rollout status deployment/dice
       shell: bash
