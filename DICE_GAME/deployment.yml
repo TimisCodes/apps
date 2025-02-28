@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dice-app
+  labels:
+    app: dice
+    type: front-end
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: dice
+  template:
+    metadata:
+      labels:
+        app: dice
+    spec:
+      containers:
+        - name: dice-app
+          image: timiscode/dice:latest
+          ports:
+            - containerPort: 3000
