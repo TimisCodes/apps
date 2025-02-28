@@ -42,7 +42,7 @@ jobs:
       shell: bash
 
     - name: Apply Kubernetes Manifests
-      run: kubectl apply -f DICE_GAME/
+      run: kubectl apply -f deployment.yml ./DICE_GAME
       shell: bash
       # updated1
      
