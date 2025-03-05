@@ -16,15 +16,6 @@ jobs:
 
     - name: Checkout Repository
       uses: actions/checkout@v4
-  
-    - name: Pull latest changes from remote
-      run: |
-        git pull origin main --rebase  # Rebases local changes on top of remote
-
-    - name: Push changes after sync
-      run: |
-        git push origin main    
-
 
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v3
