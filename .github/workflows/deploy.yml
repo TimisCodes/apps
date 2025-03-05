@@ -1,8 +1,10 @@
 name: Deploy to Kubernetes
 
 on:
-  push:
   pull_request:
+    branches: 
+      - main # Pull request
+  push:
     branches:
       - main  # Runs on push to the main branch
 
