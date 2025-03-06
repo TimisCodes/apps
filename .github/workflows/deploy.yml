@@ -64,9 +64,7 @@ jobs:
       shell: bash
       
     - name: Create Ingress for deployment
-      run: |
-        kubectl delete ingress web01-ingress
-        kubectl create -f 2136_kool_form_pack/ingress.yml
+      run: kubectl create -f 2136_kool_form_pack/ingress.yml
       shell: bash
 
     - name: Create certificate
