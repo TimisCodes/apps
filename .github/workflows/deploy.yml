@@ -63,13 +63,13 @@ jobs:
         kubectl describe deployment web01
       shell: bash
       
-    - name: Create Ingress for deployment
-      run: kubectl apply -f 2136_kool_form_pack/ingress.yml
-      shell: bash
+    # - name: Create Ingress for deployment
+    #   run: kubectl apply -f 2136_kool_form_pack/ingress.yml
+    #   shell: bash
 
-    - name: Create certificate
-      run: |
-        kubectl apply -f https://github.com/cert-manager/cert-manager/releases/latest/download/cert-manager.yaml
-        kubectl create -f 2136_kool_form_pack/cluster-issuer.yml
-        kubectl create -f 2136_kool_form_pack/certificate.yml
-      shell: bash
+    # - name: Create certificate
+    #   run: |
+    #     kubectl apply -f https://github.com/cert-manager/cert-manager/releases/latest/download/cert-manager.yaml
+    #     kubectl create -f 2136_kool_form_pack/cluster-issuer.yml
+    #     kubectl create -f 2136_kool_form_pack/certificate.yml
+    #   shell: bash
