@@ -60,4 +60,8 @@ jobs:
       run: |
         kubectl describe svc web01-service
         kubectl describe deployment web01
-      shell: bash     
+      shell: bash
+      
+    - name: Create Ingress for deployment
+      run: kubectl create -f ingress.yml
+      shell: bash
