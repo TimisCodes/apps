@@ -55,4 +55,9 @@ jobs:
       run: kubectl apply -f 2136_kool_form_pack/deployment.yml
       shell: bash
       # updated1
-     
+
+    - name: Describe service & checking port
+      run: |
+        kubectl describe svc web01-service
+        kubectl describe deployment web01
+      shell: bash     
