@@ -68,5 +68,7 @@ jobs:
       shell: bash
 
     - name: Create certificate
-      run: kubectl create -f 2136_kool_form_pack/certificate.yml
+      run: |
+        kubectl apply -f https://github.com/cert-manager/cert-manager/releases/latest/download/cert-manager.yaml
+        kubectl create -f 2136_kool_form_pack/certificate.yml
       shell: bash
