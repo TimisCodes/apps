@@ -41,8 +41,8 @@ jobs:
     
     - name: Build Deployment & Service
       run: | 
-        kubectl create -f  2136_kool_form_pack/deployment.yml
-        kubectl create -f  2136_kool_form_pack/service.yml
+        kubectl apply -f  2136_kool_form_pack/deployment.yml
+        kubectl apply -f  2136_kool_form_pack/service.yml
       shell: bash
       
     - name: Deploy to Kubernetes
