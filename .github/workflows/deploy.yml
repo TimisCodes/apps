@@ -47,8 +47,8 @@ jobs:
       
     - name: Deploy to Kubernetes
       run: |
-        kubectl set image deployment/app-web01 app-web01=timiscode/web01:latest 
-        kubectl rollout status deployment/app-web01
+        kubectl set image deployment/web01 app-web01=timiscode/web01:latest 
+        kubectl rollout status deployment/web01
       shell: bash
 
     - name: Apply Kubernetes Manifests
