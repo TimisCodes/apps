@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: web01-tls
+  namespace: default  # Change if needed
+spec:
+  secretName: web01-tls  # This will store the TLS certificate
+  issuerRef:
+    name: letsencrypt-prod  # This must match your ClusterIssuer
+    kind: ClusterIssuer
+  dnsNames:
+    - kool.timiscodes.xyz  # Replace with your domain

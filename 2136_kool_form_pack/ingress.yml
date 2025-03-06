@@ -6,6 +6,10 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   ingressClassName: nginx
+  tls:
+  - host: 
+    - kool.timiscodes.xyz
+    secretName: web01-tls
   rules:
     - host: kool.timiscodes.xyz
       http:
