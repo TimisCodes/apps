@@ -10,3 +10,5 @@ spec:
     kind: ClusterIssuer
   dnsNames:
     - kool.timiscodes.xyz  # Replace with your domain
+
+
