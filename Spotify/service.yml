@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: spotify-service
+  labels:
+    app: app-spotify
+    type: frontend
+spec:
+  selector:
+    app: app-spotify
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: LoadBalancer
+  externalTrafficPolicy: Local

@@ -73,3 +73,26 @@ jobs:
     #     kubectl create -f 2136_kool_form_pack/cluster-issuer.yml
     #     kubectl create -f 2136_kool_form_pack/certificate.yml
     #   shell: bash
+
+    - name: Build Deployment & Service
+      run: | 
+        kubectl create -f  Spotify/deployment.yml
+        kubectl create -f Spotify/service.yml
+      shell: bash
+      
+    - name: Deploy to Kubernetes
+      run: |
+        kubectl set image deployment/spotify spotify-app=linuxserver/your_spotify:1.12.0 
+        kubectl rollout status deployment/spotify
+      shell: bash
+
+    - name: Apply Kubernetes Manifests
+      run: kubectl apply -f Spotify/deployment.yml
+      shell: bash
+      # updated1
+
+    - name: Describe service & checking port
+      run: |
+        kubectl describe svc spotify-service
+        kubectl describe deployment spotify
+      shell: bash
