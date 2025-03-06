@@ -63,5 +63,5 @@ jobs:
       shell: bash
       
     - name: Create Ingress for deployment
-      run: kubectl create -f ingress.yml
+      run: kubectl create -f 2136_kool_form_pack/ingress.yml
       shell: bash
