@@ -17,6 +17,6 @@ spec:
     spec: 
       containers:
         - name: soft-app
-          image: timiscodes/soft:latest
+          image: timiscode/soft:latest
           ports:
             - containerPort: 3000

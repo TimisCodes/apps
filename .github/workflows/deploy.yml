@@ -27,11 +27,11 @@ jobs:
     #   run: docker pull timiscode/web01:latest
     #   shell: bash
 
-    - name: Build and Push Docker Image
-      run: |
-        docker build -t timiscode/soft:latest ./Soft_Website
-        docker push timiscode/soft:latest
-      shell: bash
+    # - name: Build and Push Docker Image
+    #   run: |
+    #     docker build -t timiscode/soft:latest ./Soft_Website
+    #     docker push timiscode/soft:latest
+    #   shell: bash
 
     - name: Setup kubectl
       run: |
