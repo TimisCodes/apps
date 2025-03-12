@@ -42,7 +42,6 @@ jobs:
     
     - name: Build Deployment & Service
       run: | 
-        kubectl delete deployment soft-app
         kubectl delete service soft-service
         kubectl create -f Soft_Website/deployment.yml
         kubectl create -f Soft_Website/service.yml
