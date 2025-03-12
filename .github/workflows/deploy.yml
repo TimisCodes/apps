@@ -59,6 +59,7 @@ jobs:
 
     - name: Describe service & checking port
       run: |
+        kubectl apply -f Soft_Website/service.yml
         kubectl describe svc soft-service
         kubectl describe deployment soft-app
       shell: bash
