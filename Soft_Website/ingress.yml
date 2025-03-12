@@ -8,7 +8,7 @@ metadata:
 spec:
   tls:
   - hosts:
-      - wor;d.timiscodes.xyz
+      - world.timiscodes.xyz
     secretName: world-tls
   rules:
   - host: world.timiscodes.xyz
