@@ -42,9 +42,8 @@ jobs:
     
     - name: Build Deployment & Service
       run: | 
-        kubectl apply -f Soft_Website/deployment.yml
-        kubectl apply -f Soft_Website/service.yml
-        kubectl create -f Soft_Website/ingress.yml
+        kubectl create -f Soft_Website/deployment.yml
+        kubectl create -f Soft_Website/service.yml
       shell: bash
       
     - name: Deploy to Kubernetes
