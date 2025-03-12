@@ -1,19 +1,23 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: soft-ingress 
-  annotations: 
-    nginx.ingress.kubernetes.io/rewrite-target: /
+  name: soft-ingress
+  annotations:  
+    kubernetes.io/ingress.class: "nginx"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
 spec:
-  ingressClassName: nginx
+  tls:
+  - hosts:
+      - wor;d.timiscodes.xyz
+    secretName: world-tls
   rules:
-    - host: soft.timiscodes.xyz
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend: 
-              service:
-                name: soft-service
-                port: 
-                  number: 80
+  - host: world.timiscodes.xyz
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: soft-service
+            port:
+              number: 80
