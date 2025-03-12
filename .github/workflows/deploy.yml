@@ -23,15 +23,15 @@ jobs:
     - name: Login to Docker Hub
       run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
 
-    - name: Pull Docker Image
-      run: docker pull timiscode/web01:latest
-      shell: bash
+    # - name: Pull Docker Image
+    #   run: docker pull timiscode/web01:latest
+    #   shell: bash
 
-    # - name: Build and Push Docker Image
-    #   run: |
-    #     docker build -t timiscode/web01:latest ./2136_kool_form_pack
-    #     docker push timiscode/web01:latest
-    #    shell: bash
+    - name: Build and Push Docker Image
+      run: |
+        docker build -t timiscode/soft:latest ./Soft_Website
+        docker push timiscode/soft:latest
+      shell: bash
 
     - name: Setup kubectl
       run: |
@@ -42,25 +42,25 @@ jobs:
     
     - name: Build Deployment & Service
       run: | 
-        kubectl apply -f  2136_kool_form_pack/deployment.yml
-        kubectl apply -f  2136_kool_form_pack/service.yml
+        kubectl create -f Soft_Website/deployment.yml
+        kubectl create -f Soft_Website/service.yml
       shell: bash
       
     - name: Deploy to Kubernetes
       run: |
-        kubectl set image deployment/web01 web01-app=timiscode/web01:latest 
-        kubectl rollout status deployment/web01
+        kubectl set image deployment/soft soft-app=timiscode/soft:latest 
+        kubectl rollout status deployment/soft-app
       shell: bash
 
     - name: Apply Kubernetes Manifests
-      run: kubectl apply -f 2136_kool_form_pack/deployment.yml
+      run: kubectl apply -f Soft_Website/deployment.yml
       shell: bash
       # updated1
 
     - name: Describe service & checking port
       run: |
-        kubectl describe svc web01-service
-        kubectl describe deployment web01
+        kubectl describe svc soft-service
+        kubectl describe deployment soft-app
       shell: bash
       
     # - name: Create Ingress for deployment
@@ -73,26 +73,3 @@ jobs:
     #     kubectl create -f 2136_kool_form_pack/cluster-issuer.yml
     #     kubectl create -f 2136_kool_form_pack/certificate.yml
     #   shell: bash
-
-    - name: Build Deployment & Service
-      run: | 
-        kubectl create -f  Spotify/deployment.yml
-        kubectl create -f Spotify/service.yml
-      shell: bash
-      
-    - name: Deploy to Kubernetes
-      run: |
-        kubectl set image deployment/spotify spotify-app=linuxserver/your_spotify:1.12.0 
-        kubectl rollout status deployment/spotify
-      shell: bash
-
-    - name: Apply Kubernetes Manifests
-      run: kubectl apply -f Spotify/deployment.yml
-      shell: bash
-      # updated1
-
-    - name: Describe service & checking port
-      run: |
-        kubectl describe svc spotify-service
-        kubectl describe deployment spotify
-      shell: bash
