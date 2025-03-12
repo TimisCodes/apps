@@ -7,13 +7,13 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    host: soft.timiscodes.xyz
-    http:
-      paths:
-        - path: /
-          pathType: Prefix
-          backend: 
-            service:
-              name: soft-service
-              port: 
-                number: 80
+    - host: soft.timiscodes.xyz
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend: 
+              service:
+                name: soft-service
+                port: 
+                  number: 80
