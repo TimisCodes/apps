@@ -48,7 +48,7 @@ jobs:
       
     - name: Deploy to Kubernetes
       run: |
-        kubectl set image deployment/soft soft-app=timiscode/soft:latest 
+        kubectl set image deployment/soft-app soft-app=timiscode/soft:latest 
         kubectl rollout status deployment/soft-app
       shell: bash
 
